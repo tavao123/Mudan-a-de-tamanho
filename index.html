@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeo Mudando de Resolução</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    height: 100vh;
+    margin: 0;
+  }
+
+  video {
+    transition: all 0.4s ease; /* animação suave */
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+  <video id="video" src="vd.mp4" autoplay loop muted></video>
+
+  <script>
+    const video = document.getElementById("video");
+
+    // Tamanhos alternados
+    const resolucoes = [
+      { w: 1080, h: 750 },
+      { w: 700, h: 300 },
+      { w: 100, h: 50 }
+    ];
+
+    let index = 0;
+
+    function mudarTamanho() {
+      const { w, h } = resolucoes[index];
+      video.style.width = w + "px";
+      video.style.height = h + "px";
+
+      index = (index + 1) % resolucoes.length;
+    }
+
+    // muda a cada 0.5 segundos
+    setInterval(mudarTamanho, 500);
+
+    // inicia com o primeiro tamanho
+    mudarTamanho();
+  </script>
+</body>
+</html>
