@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vídeo Dinâmico</title>
+<title>Test</title>
 
-<!-- Tags para mostrar um preview bonito no Discord -->
-<meta property="og:title" content="test resolução">
-<meta property="og:description" content="heheheha">
-<meta property="og:image" content="https://ibb.co/B2Hr6T3C">
+<!-- 🎯 Meta tags para o Discord -->
+<meta property="og:title" content="Test">
+<meta property="og:description" content="Testando video resolução">
+<meta property="og:image" content="https://i.ibb.co/B2Hr6T3C/image.png">
 <meta property="og:type" content="video.other">
 <meta property="og:video" content="https://tavao123.github.io/Mudan-a-de-tamanho/vd.mp4">
 <meta property="og:video:type" content="video/mp4">
 <meta property="og:video:width" content="1080">
 <meta property="og:video:height" content="750">
+<meta name="theme-color" content="#000000">
 
 <style>
   body {
@@ -24,35 +25,38 @@
     height: 100vh;
     margin: 0;
   }
+
   video {
     transition: all 0.4s ease;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 </style>
 </head>
 <body>
+
   <video id="video" src="vd.mp4" autoplay loop muted playsinline></video>
 
   <script>
     const video = document.getElementById("video");
 
-    const resolucoes = [
+    // Ciclo de tamanhos
+    const tamanhos = [
       { w: 1080, h: 750 },
       { w: 550, h: 750 },
-      { w: 180, h: 750 },
+      { w: 180, h: 750 }
     ];
 
-    let index = 0;
-
+    let i = 0;
     function mudarTamanho() {
-      const { w, h } = resolucoes[index];
+      const { w, h } = tamanhos[i];
       video.style.width = w + "px";
       video.style.height = h + "px";
-      index = (index + 1) % resolucoes.length;
+      i = (i + 1) % tamanhos.length;
     }
 
-    setInterval(mudarTamanho, 500); // muda a cada 0.5s
+    setInterval(mudarTamanho, 500);
     mudarTamanho();
   </script>
+
 </body>
 </html>
